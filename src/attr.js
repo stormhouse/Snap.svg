@@ -80,6 +80,10 @@ Snap.plugin(function (Snap, Element, Paper, glob, Fragment) {
             }
             if (!clip) {
                 clip = make("clipPath", getSomeDefs(this));
+                var clipPathUnits = value.node.getAttribute("clipPathUnits");
+                if (clipPathUnits) {
+                    clip.node.setAttribute("clipPathUnits", clipPathUnits);
+                }
                 clip.node.appendChild(value.node);
                 !clip.node.id && $(clip.node, {
                     id: clip.id
